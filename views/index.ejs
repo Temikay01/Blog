@@ -1,0 +1,48 @@
+<%- include ("partials/header.ejs") %>
+
+<div class="form-container">
+  <form class="empty-blog-form" action="/submit" method="post">
+    <input class="form-gap" type="text" id="" name="bTitle" placeholder="New post title" required>
+    <textarea class="empty-blog-form" id="" name="bMessage" rows="4" cols="50" placeholder="Share a post 🙂..." required></textarea>
+    <button class="button button-flex" type="submit">submit</button>
+  </form>
+</div> 
+
+<div class="home-blog-container">
+  <%if(locals.posts) {%>
+    <% posts.forEach(post => { %>
+      <div class="blog-card-wrapper">
+        <div class="blog-card">
+          <h1 class="blog-header">
+              <%= post.title %>
+          </h1>
+          <div class="blog-message">
+              <%= post.message %>
+          </div>
+        
+        <div class="button-flex"> 
+          <a href="/edit/<%= post.id %>">
+            <button class="button">edit</button>
+          </a>
+
+            <%# to get the delete button working dynamically:
+            iterate thru the posts array using the forEach loop, then pass the random id generated in js into the form route %>
+          
+            
+          <% posts.forEach(post => { %>
+            <form method="POST" action="/delete/<%= post.id %>?_method=DELETE">
+          <% }) %>   
+              <button class="button" type="submit">Delete</button>
+            </form>
+        </div>
+      </div> 
+      </div>
+    <% }); %>
+  <%} else if(!locals.posts) {%>
+    <h2>Please share a post below</h2>
+  <%}%>
+
+   
+ 
+</div>  
+<%- include ("partials/footer.ejs") %> 

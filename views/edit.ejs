@@ -1,0 +1,24 @@
+
+<!-- i need to render a form that shows the current blog title and message in the input and textarea fields respectively. -->
+<%- include ("partials/header.ejs") -%>
+    <div class="container-main">
+<% if(locals.post) { %>
+    <div class="blog-card">
+        <form action="/update/<%= post.id %>?_method=PATCH" method="post">
+            
+            <input class="blog-header" type="text" id="" name="bTitle" value="<%= post.title %>">
+            <textarea class="blog-message" id="" name="bMessage" rows="6" cols="90"><%= post.message %></textarea>
+            <div class="button-flex">
+                <button class="button" type="submit">submit</button>
+                <form method="GET" action="/">
+                    <button class="button" type="submit">cancel</button>
+                </form>
+            </div>
+        </form> 
+    </div>
+<% } else { %>
+    <p>post not found</p>
+<% } %>
+</div>
+
+<%- include ("partials/footer.ejs") %>
