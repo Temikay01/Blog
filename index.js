@@ -63,7 +63,7 @@ app.post("/submit", (req,res) => {
 
   }
     
-    //console.log(posts);
+  console.log(userPost);
 
         
 });
@@ -80,6 +80,7 @@ app.patch("/update/:id", (req,res) => {
     if (newTitle !== oldTitle || newMessage !== oldMessage) {
       posts[postIndex].title = newTitle;
       posts[postIndex].message = newMessage;
+      console.log(`post edited to: ${newMessage}`);
       res.redirect("/");
     } else if (newTitle === oldTitle || newMessage === oldMessage){
       console.log("No changes made");

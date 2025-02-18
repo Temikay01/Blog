@@ -326,6 +326,10 @@ laptops. 1025px — 1200px: Desktops, large screens
     .empty-blog-form {
         width: 300px;
     }
+    .container-about-us {
+        
+        height: fit-content;
+    }
     .home-title {
         color: rgb(221, 146, 48);
 
